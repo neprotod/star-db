@@ -1,0 +1,42 @@
+#header{
+  margin-top:40px;
+  padding:20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.logo{
+  align-items: center;
+  text-decoration: none !important;
+  color:#F3DD1D;
+  justify-self: left;
+  margin-right:20px;
+}
+
+.star-wars-logo{
+  height:50px;
+}
+
+.logo .big-text{
+  font-size:30px;
+  margin-left:10px;
+}
+
+.menu{
+  padding:0;
+  margin:0;
+}
+.menu li{
+  padding:0;
+  margin:0;
+  list-style: none;
+  padding:10px;
+  font-size:1.2rem;
+}
+
+
+@media screen and (max-width: 650px) {
+  #header{
+    justify-content: center;
+  }
+}

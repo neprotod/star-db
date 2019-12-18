@@ -1,0 +1,10 @@
+.person-details{
+  flex-wrap: wrap;
+  flex-direction: row;
+  background: transparent;
+}
+
+.person-image{
+  max-height:250px;
+  border-radius: 20px;
+}

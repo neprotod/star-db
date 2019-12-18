@@ -1,0 +1,62 @@
+html{
+  background:url('./img/star.jpg') #000;
+}
+body{
+  background:url('./img/colach.jpg') center top no-repeat;
+  
+}
+html{
+  height:100%;
+}
+body{
+  min-height:100%;
+}
+
+
+.border-item{
+  /*border:1px solid #555;*/
+  background:#2A2A2Acc;
+  border-radius: 5px;
+}
+
+.list-group li{
+  background: transparent;
+}
+.list-group-item{
+  border-top:none;
+  border-left:none;
+  border-right:none;
+}
+
+.container{
+  flex-wrap: wrap;
+}
+.container > div{
+  margin-bottom: 40px;
+  padding:20px;
+}
+
+.content{
+  padding:0px !important;
+  flex-wrap: wrap;
+}
+.content > *{
+  padding:20px;
+}
+
+.content .left-column{
+  flex-grow: 0.3;
+  margin-right:20px;
+}
+.content .right-column{
+  flex-grow: 1;
+}
+
+@media screen and (max-width: 760px) {
+  .content .left-column{
+    flex-grow: 1;
+    margin:0;
+    order:2;
+    margin-top:20px;
+  }
+}

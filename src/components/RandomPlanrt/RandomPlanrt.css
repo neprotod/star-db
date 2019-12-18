@@ -1,0 +1,27 @@
+.random-planet{
+  flex-wrap: wrap;
+}
+.planet-image{
+  max-height:250px;
+  border-radius: 20px;
+}
+
+.random-planet > *{
+  margin-right: 20px;
+}
+.random-planet h4{
+  font-weight: bold;
+}
+
+.list-group-item .term{
+  padding-right: 10px;
+}
+
+@media screen and (max-width: 650px) {
+  .random-planet{
+    justify-content: center;
+  }
+  .planet-image{
+    margin-bottom: 20px;
+  }
+}
