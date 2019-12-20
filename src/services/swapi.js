@@ -7,7 +7,7 @@ export default class Swapi{
     if(!res.ok){
       throw new Error(`Could not fetch ${url}`);
     }
-    console.log(res);
+
     return await res.json();
   }
 
@@ -48,7 +48,7 @@ export default class Swapi{
 
   async getPlanet(id){
     const res = await this.getResourse(`planets/${id}`);
-    return res;
+    return this._transformPlanet(res);
   }
 
   async getFilms(id){
@@ -69,5 +69,21 @@ export default class Swapi{
   async getSpecies(id){
     const res = await this.getResourse(`species/${id}`);
     return res;
+  }
+
+  _extractId(item){
+    const reqExt = /\/([0-9]*)\/$/;
+
+    return item.url.match(reqExt)[1];
+  }
+
+  async _transformPlanet(planet){
+    return {
+      id: this._extractId(planet),
+      name: planet.name,
+      population: planet.population,
+      rotationPeriod: planet.rotation_period,
+      diameter: planet.diameter
+    }
   }
 }

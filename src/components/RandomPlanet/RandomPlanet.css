@@ -4,6 +4,7 @@
 .planet-image{
   max-height:250px;
   border-radius: 20px;
+  height:100%;
 }
 
 .random-planet > *{

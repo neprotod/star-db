@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import './img/colach.jpg';
 import Header from '../Header';
-import RandomPlanrt from '../RandomPlanrt';
+import RandomPlanet from '../RandomPlanet';
 import ItemList from '../ItemList';
 import PersonDetails from '../PersonDetails';
 
@@ -12,7 +12,7 @@ export default class App extends Component {
     return (
       <div className="container">
         <Header />
-        <RandomPlanrt />
+        <RandomPlanet />
         <div className="d-flex content">
           <div className="left-column border-item">
             <ItemList />

@@ -8,7 +8,7 @@ const Header = () => {
     <div id="header" className="d-flex border-item">
       <a href="/" className="d-flex logo">
         <img className="star-wars-logo" src={starWarsLogo} />
-        <span class="big-text">DB</span>
+        <span className="big-text">DB</span>
       </a>
       <ul className="menu d-flex">
         <li>
