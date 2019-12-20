@@ -13,12 +13,12 @@ export default class Swapi{
 
   async getAllPeoples(){
     const res = await this.getResourse(`people`);
-    return res.results;
+    return res.results.map((item)=>this._transformPerson(item));
   }
   
   async getAllPlanets(){
     const res = await this.getResourse(`planets`);
-    return res.results;
+    return res.results.map((item)=>this._transformPlanet(item));
   }
 
   async getAllFilms(){
@@ -38,12 +38,12 @@ export default class Swapi{
 
   async getAllVehicles(){
     const res = await this.getResourse(`vehicles`);
-    return res.results;
+    return res.results.map((item)=>this._transformPlanet(item));
   }
 
   async getPersone(id){
     const res = await this.getResourse(`people/${id}`);
-    return res;
+    return this._transformPerson(res);
   }
 
   async getPlanet(id){
@@ -77,13 +77,37 @@ export default class Swapi{
     return item.url.match(reqExt)[1];
   }
 
-  async _transformPlanet(planet){
+  _transformPlanet = (planet) => {
     return {
       id: this._extractId(planet),
       name: planet.name,
       population: planet.population,
       rotationPeriod: planet.rotation_period,
       diameter: planet.diameter
+    }
+  }
+
+  _transformStarship = (starship) => {
+    return {
+      id: this._extractId(starship),
+      name: starship.name,
+      model: starship.model,
+      manufacturer: starship.manufacturer,
+      costInCredits: starship.cost_in_credits,
+      length: starship.length,
+      crew: starship.crew,
+      passengers: starship.passengers,
+      cargoCapacity: starship.cargo_capacity
+    }
+  };
+
+  _transformPerson = (person) => {
+    return {
+      id: this._extractId(person),
+      name: person.name,
+      gender: person.gender,
+      birthYear: person.birth_year,
+      eyeColor: person.eye_color
     }
   }
 }
