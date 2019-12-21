@@ -10,20 +10,19 @@ import PeoplePage from '../PeoplePage';
 
 export default class App extends Component {
   state = {
-    hasError: false
-  }
+    hasError: false,
+  };
 
-  componentDidCatch(){
-    console.log('componentDidCatch');
+  componentDidCatch() {
     this.setState({
-      hasError: true
+      hasError: true,
     });
   }
 
   render() {
     const { hasError } = this.state;
 
-    if(hasError)
+    if (hasError)
       return (
         <div className="border-item">
           <ErrorIndicator />

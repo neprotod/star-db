@@ -7,18 +7,22 @@ const Header = () => {
   return (
     <div id="header" className="d-flex border-item">
       <a href="/" className="d-flex logo">
-        <img className="star-wars-logo" src={starWarsLogo} />
+        <img
+          className="star-wars-logo"
+          alt="Logo Star Wars"
+          src={starWarsLogo}
+        />
         <span className="big-text">DB</span>
       </a>
       <ul className="menu d-flex">
         <li>
-          <a href="#">People</a>
+          <a href="/">People</a>
         </li>
         <li>
-          <a href="#">Planets</a>
+          <a href="/">Planets</a>
         </li>
         <li>
-          <a href="#">Starships</a>
+          <a href="/">Starships</a>
         </li>
       </ul>
     </div>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import Swapi from '../../services/swapi';
 import ErrorIndicator from '../ErrorIndicator';
@@ -7,57 +8,59 @@ import Spinner from '../Spinner';
 import './ItemList.css';
 
 class ItemList extends Component {
+  static propTypes = {
+    onItemSelect: PropTypes.func.isRequired,
+  };
+
   state = {
     people: null,
-    error: false
+    error: false,
   };
 
   swapi = new Swapi();
 
-
-  componentDidMount(){
+  componentDidMount() {
     this.peopleList();
   }
 
-  errorSet = ()=>{
+  errorSet = () => {
     this.setState({
-      error: true
+      error: true,
     });
-  }
+  };
 
-
-  async peopleList(){
-    try{
+  async peopleList() {
+    try {
       const people = await this.swapi.getAllPeoples();
 
       this.setState({
-        people
+        people,
       });
-    }catch(e){
+    } catch (e) {
       this.errorSet();
     }
   }
 
-  onItemSelect = (id) =>{
+  renderItem(people) {
+    const { onItemSelect } = this.props;
 
-  }
-
-  renderItem(people){
-    return people.map(({id, name})=>{
+    return people.map(({ id, name }) => {
       return (
-        <li className="list-group-item"
-            key={id}
-            onClick={() => this.props.onItemSelect(id)} >
+        <li
+          className="list-group-item"
+          key={id}
+          onClick={() => onItemSelect(id)}
+          role="presentation"
+        >
           {name}
         </li>
       );
     });
   }
 
-  render(){
+  render() {
     const { people, error } = this.state;
-    if(!people)
-      return <Spinner />
+    if (!people) return <Spinner />;
 
     const items = this.renderItem(people);
     return (
@@ -66,6 +69,6 @@ class ItemList extends Component {
       </ul>
     );
   }
-};
+}
 
 export default ItemList;

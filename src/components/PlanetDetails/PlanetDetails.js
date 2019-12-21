@@ -1,11 +1,7 @@
 import React from 'react';
 
 const PlanetDetail = () => {
-  return (
-    <div>
-      
-    </div>
-  );
+  return <div />;
 };
 
 export default PlanetDetail;

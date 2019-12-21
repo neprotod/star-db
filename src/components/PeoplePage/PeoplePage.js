@@ -7,29 +7,25 @@ import ErrorIndicator from '../ErrorIndicator';
 export default class PeoplePage extends Component {
   state = {
     selectedPerson: 3,
-    hasError: false
-  }
+    hasError: false,
+  };
 
-  componentDidCatch(){
-    console.log('componentDidCatch');
+  componentDidCatch() {
     this.setState({
-      hasError: true
+      hasError: true,
     });
   }
 
-  onPesrsonSelected = (id) => {
+  onPesrsonSelected = id => {
     this.setState({
-      selectedPerson: id
+      selectedPerson: id,
     });
-  }
-
-  
+  };
 
   render() {
-
     const { selectedPerson, hasError } = this.state;
 
-    if(hasError)
+    if (hasError)
       return (
         <div className="border-item">
           <ErrorIndicator />
