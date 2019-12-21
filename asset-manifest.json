@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/star-db/static/css/main.81b28b39.chunk.css",
+    "main.js": "/star-db/static/js/main.0896342f.chunk.js",
+    "main.js.map": "/star-db/static/js/main.0896342f.chunk.js.map",
+    "runtime-main.js": "/star-db/static/js/runtime-main.fca3eed0.js",
+    "runtime-main.js.map": "/star-db/static/js/runtime-main.fca3eed0.js.map",
+    "static/js/2.3e9cedc5.chunk.js": "/star-db/static/js/2.3e9cedc5.chunk.js",
+    "static/js/2.3e9cedc5.chunk.js.map": "/star-db/static/js/2.3e9cedc5.chunk.js.map",
+    "index.html": "/star-db/index.html",
+    "precache-manifest.5b54041f256c151b836baccfc9babe32.js": "/star-db/precache-manifest.5b54041f256c151b836baccfc9babe32.js",
+    "service-worker.js": "/star-db/service-worker.js",
+    "static/css/main.81b28b39.chunk.css.map": "/star-db/static/css/main.81b28b39.chunk.css.map",
+    "static/js/2.3e9cedc5.chunk.js.LICENSE": "/star-db/static/js/2.3e9cedc5.chunk.js.LICENSE",
+    "static/media/StarWars.png": "/star-db/static/media/StarWars.54567dbf.png",
+    "static/media/colach.jpg": "/star-db/static/media/colach.0bb77596.jpg",
+    "static/media/App.css": "/star-db/static/media/star.74d7a07e.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fca3eed0.js",
+    "static/js/2.3e9cedc5.chunk.js",
+    "static/css/main.81b28b39.chunk.css",
+    "static/js/main.0896342f.chunk.js"
+  ]
+}
