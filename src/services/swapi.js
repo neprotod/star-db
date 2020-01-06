@@ -55,22 +55,22 @@ export default class Swapi {
 
   getFilms = async id => {
     const res = await this.getResourse(`films/${id}`);
-    return res;
+    return this._transformPerson(res);
   };
 
   getStarship = async id => {
     const res = await this.getResourse(`starships/${id}`);
-    return res;
+    return this._transformPerson(res);
   };
 
   getVehicle = async id => {
     const res = await this.getResourse(`vehicles/${id}`);
-    return res;
+    return this._transformPerson(res);
   };
 
   getSpecies = async id => {
     const res = await this.getResourse(`species/${id}`);
-    return res;
+    return this._transformPerson(res);
   };
 
   getPlanetImage = id => {

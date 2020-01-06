@@ -8,12 +8,12 @@ const ItemList = props => {
   const {
     data: { itemList },
     onItemSelect,
-    renderItem,
+    children,
   } = props;
 
   const items = itemList.map(items => {
     const { id } = items;
-    const item = renderItem(items);
+    const item = children(items);
 
     return (
       <li

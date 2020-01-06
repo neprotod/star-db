@@ -49,6 +49,7 @@ export default class ItemDetails extends Component {
 
   componentDidUpdate(prevProps) {
     const { itemId } = this.props;
+
     if (itemId !== prevProps.itemId) {
       this.updateLoader();
       this.updatePerson();
@@ -70,6 +71,7 @@ export default class ItemDetails extends Component {
 
   async updatePerson() {
     const { itemId, getData } = this.props;
+
     if (!itemId) {
       return;
     }
