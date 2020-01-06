@@ -5,35 +5,23 @@ import './img/colach.jpg';
 
 import Header from '../Header';
 import RandomPlanet from '../RandomPlanet';
-import ErrorIndicator from '../ErrorIndicator';
+import ErrorBoundry from '../ErrorBoundry';
 import PeoplePage from '../PeoplePage';
+import Swapi from '../../services/swapi';
 
 export default class App extends Component {
-  state = {
-    hasError: false,
-  };
+  state = {};
 
-  componentDidCatch() {
-    this.setState({
-      hasError: true,
-    });
-  }
+  swapi = new Swapi();
 
   render() {
-    const { hasError } = this.state;
-
-    if (hasError)
-      return (
-        <div className="border-item">
-          <ErrorIndicator />
-        </div>
-      );
-
     return (
       <div className="container">
-        <Header />
-        <RandomPlanet />
-        <PeoplePage />
+        <ErrorBoundry>
+          <Header />
+          <RandomPlanet />
+          <PeoplePage />
+        </ErrorBoundry>
       </div>
     );
   }
