@@ -1,93 +1,105 @@
-export default class Swapi{
+/* eslint-disable */
+export default class Swapi {
   _apiUrl = 'https://swapi.co/api/';
+  _imgUrl = 'https://starwars-visualguide.com/assets/img/';
 
-  async getResourse(url = ''){
+  getResourse = async (url = '') => {
     const res = await fetch(this._apiUrl + url);
-    
-    if(!res.ok){
+
+    if (!res.ok) {
       throw new Error(`Could not fetch ${url}`);
     }
+    const result = await res.json();
+    return result;
+  };
 
-    return await res.json();
-  }
-
-  async getAllPeoples(){
+  getAllPeoples = async () => {
     const res = await this.getResourse(`people`);
-    return res.results.map((item)=>this._transformPerson(item));
-  }
-  
-  async getAllPlanets(){
-    const res = await this.getResourse(`planets`);
-    return res.results.map((item)=>this._transformPlanet(item));
-  }
+    return res.results.map(item => this._transformPerson(item));
+  };
 
-  async getAllFilms(){
+  getAllPlanets = async () => {
+    const res = await this.getResourse(`planets`);
+    return res.results.map(item => this._transformPlanet(item));
+  };
+
+  getAllFilms = async () => {
     const res = await this.getResourse(`films`);
     return res.results;
-  }
+  };
 
-  async getAllStarships(){
+  getAllStarships = async () => {
     const res = await this.getResourse(`starships`);
     return res.results;
-  }
+  };
 
-  async getAllSpecies(){
+  getAllSpecies = async () => {
     const res = await this.getResourse(`species`);
     return res.results;
-  }
+  };
 
-  async getAllVehicles(){
+  getAllVehicles = async () => {
     const res = await this.getResourse(`vehicles`);
-    return res.results.map((item)=>this._transformPlanet(item));
-  }
+    return res.results.map(item => this._transformPlanet(item));
+  };
 
-  async getPersone(id){
+  getPersone = async id => {
     const res = await this.getResourse(`people/${id}`);
     return this._transformPerson(res);
-  }
+  };
 
-  async getPlanet(id){
+  getPlanet = async id => {
     const res = await this.getResourse(`planets/${id}`);
     return this._transformPlanet(res);
-  }
+  };
 
-  async getFilms(id){
+  getFilms = async id => {
     const res = await this.getResourse(`films/${id}`);
     return res;
-  }
+  };
 
-  async getStarship(id){
+  getStarship = async id => {
     const res = await this.getResourse(`starships/${id}`);
     return res;
-  }
+  };
 
-  async getVehicle(id){
+  getVehicle = async id => {
     const res = await this.getResourse(`vehicles/${id}`);
     return res;
-  }
+  };
 
-  async getSpecies(id){
+  getSpecies = async id => {
     const res = await this.getResourse(`species/${id}`);
     return res;
-  }
+  };
 
-  _extractId(item){
+  getPlanetImage = id => {
+    return `${this._imgUrl}planets/${id}.jpg`;
+  };
+  getPersonImage = id => {
+    return `${this._imgUrl}characters/${id}.jpg`;
+  };
+  getStarshipImage = id => {
+    return `${this._imgUrl}starships/${id}.jpg`;
+  };
+
+  _extractId(item) {
     const reqExt = /\/([0-9]*)\/$/;
 
     return item.url.match(reqExt)[1];
   }
 
-  _transformPlanet = (planet) => {
+  _transformPlanet = planet => {
     return {
       id: this._extractId(planet),
       name: planet.name,
       population: planet.population,
       rotationPeriod: planet.rotation_period,
-      diameter: planet.diameter
-    }
-  }
+      diameter: planet.diameter,
+    };
+  };
 
-  _transformStarship = (starship) => {
+  _transformStarship = starship => {
     return {
       id: this._extractId(starship),
       name: starship.name,
@@ -97,17 +109,17 @@ export default class Swapi{
       length: starship.length,
       crew: starship.crew,
       passengers: starship.passengers,
-      cargoCapacity: starship.cargo_capacity
-    }
+      cargoCapacity: starship.cargo_capacity,
+    };
   };
 
-  _transformPerson = (person) => {
+  _transformPerson = person => {
     return {
       id: this._extractId(person),
       name: person.name,
       gender: person.gender,
       birthYear: person.birth_year,
-      eyeColor: person.eye_color
-    }
-  }
+      eyeColor: person.eye_color,
+    };
+  };
 }
