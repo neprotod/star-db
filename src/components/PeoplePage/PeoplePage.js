@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
 
 import ItemList from '../ItemList';
-import PersonDetails from '../PersonDetails';
-import ErrorIndicator from '../ErrorIndicator';
+import ItemDetails, { Record } from '../ItemDetails/ItemDetails';
+import Swapi from '../../services/swapi';
+
+import Row from '../Row';
+import ErrorBoundry from '../ErrorBoundry';
+import withData from '../hoc/withData';
 
 export default class PeoplePage extends Component {
+  swapi = new Swapi();
+
   state = {
     selectedPerson: 3,
-    hasError: false,
   };
-
-  componentDidCatch() {
-    this.setState({
-      hasError: true,
-    });
-  }
 
   onPesrsonSelected = id => {
     this.setState({
@@ -23,24 +22,34 @@ export default class PeoplePage extends Component {
   };
 
   render() {
-    const { selectedPerson, hasError } = this.state;
+    const { selectedPerson } = this.state;
+    const { getPersone, getPersonImage, getAllPeoples } = this.swapi;
 
-    if (hasError)
-      return (
-        <div className="border-item">
-          <ErrorIndicator />
-        </div>
-      );
+    const WithData = withData(ItemList, getAllPeoples);
 
-    return (
-      <div className="d-flex content">
-        <div className="left-column border-item">
-          <ItemList onItemSelect={this.onPesrsonSelected} />
-        </div>
-        <div className="right-column border-item">
-          <PersonDetails personId={selectedPerson} />
-        </div>
-      </div>
+    const itemList = (
+      <ErrorBoundry>
+        <WithData
+          onItemSelect={this.onPesrsonSelected}
+          renderItem={({ name }) => name}
+        />
+      </ErrorBoundry>
     );
+
+    const itemDetails = (
+      <ErrorBoundry>
+        <ItemDetails
+          itemId={selectedPerson}
+          getData={getPersone}
+          image={getPersonImage}
+        >
+          <Record field="gender" label="Gender" />
+          <Record field="birthYear" label="Birth Year" />
+          <Record field="eyeColor" label="Eye Color" />
+        </ItemDetails>
+      </ErrorBoundry>
+    );
+
+    return <Row left={itemList} right={itemDetails} />;
   }
 }
