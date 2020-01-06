@@ -33,8 +33,6 @@ export default class RandomPlanet extends Component {
   };
 
   updatePlanet = async () => {
-    // const id = 20;
-
     const id = Math.floor(Math.random() * 20) + 1;
     try {
       const planet = await this.swapi.getPlanet(id);
