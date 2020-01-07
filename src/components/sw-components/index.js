@@ -1,7 +1,9 @@
 /* eslint-disable import/named */
 import { PersonList, PlanetList, StarshipList } from './ItemList';
 
-import { PersonDetail, PlanetDetail, StarshipDetail } from './ItemDetails';
+import PersonDetail from './PersonDetail';
+import PlanetDetail from './PlanetDetail';
+import StarshipDetail from './StarshipDetail';
 
 export {
   PersonList,
