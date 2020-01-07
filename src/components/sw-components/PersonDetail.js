@@ -5,9 +5,7 @@ import ItemDetails, { Record } from '../ItemDetails/ItemDetails';
 
 import withSwapi from '../hoc/withSwapi';
 
-const PersonDetail = ({ itemId, swapi }) => {
-  const { getPersone, getPersonImage } = swapi;
-
+const PersonDetail = ({ itemId, getPersone, getPersonImage }) => {
   return (
     <ItemDetails itemId={itemId} getData={getPersone} image={getPersonImage}>
       <Record field="gender" label="Gender" />
@@ -17,12 +15,18 @@ const PersonDetail = ({ itemId, swapi }) => {
   );
 };
 
-PersonDetail.propTypes = {
-  itemId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-  swapi: PropTypes.shape({
-    getPersone: PropTypes.func(),
-    getPersonImage: PropTypes.func(),
-  }).isRequired,
+const mapMethodsToProps = swapi => {
+  const { getPersone, getPersonImage } = swapi;
+  return {
+    getPersone,
+    getPersonImage,
+  };
 };
 
-export default withSwapi(PersonDetail);
+PersonDetail.propTypes = {
+  itemId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+  getPersone: PropTypes.func.isRequired,
+  getPersonImage: PropTypes.func.isRequired,
+};
+
+export default withSwapi(PersonDetail, mapMethodsToProps);

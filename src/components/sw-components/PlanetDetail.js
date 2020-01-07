@@ -5,8 +5,7 @@ import ItemDetails, { Record } from '../ItemDetails/ItemDetails';
 
 import withSwapi from '../hoc/withSwapi';
 
-const PlanetDetail = ({ itemId, swapi }) => {
-  const { getPlanet, getPlanetImage } = swapi;
+const PlanetDetail = ({ itemId, getPlanet, getPlanetImage }) => {
   return (
     <ItemDetails itemId={itemId} getData={getPlanet} image={getPlanetImage}>
       <Record field="population" label="Population" />
@@ -16,12 +15,18 @@ const PlanetDetail = ({ itemId, swapi }) => {
   );
 };
 
-PlanetDetail.propTypes = {
-  itemId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-  swapi: PropTypes.shape({
-    getPlanet: PropTypes.func(),
-    getPlanetImage: PropTypes.func(),
-  }).isRequired,
+const mapMethodsToProps = swapi => {
+  const { getPlanet, getPlanetImage } = swapi;
+  return {
+    getPlanet,
+    getPlanetImage,
+  };
 };
 
-export default withSwapi(PlanetDetail);
+PlanetDetail.propTypes = {
+  itemId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+  getPlanet: PropTypes.func.isRequired,
+  getPlanetImage: PropTypes.func.isRequired,
+};
+
+export default withSwapi(PlanetDetail, mapMethodsToProps);

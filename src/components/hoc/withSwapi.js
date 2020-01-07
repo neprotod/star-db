@@ -4,10 +4,13 @@ import React from 'react';
 
 import { SwapiConsumer } from '../context/SwapiContext';
 
-const withSwapi = Wrapper => {
+const withSwapi = (Wrapper, mapMethodsToProps) => {
   return props => (
     <SwapiConsumer>
-      {swapi => <Wrapper {...props} swapi={swapi} />}
+      {swapi => {
+        const swapiProps = mapMethodsToProps(swapi);
+        return <Wrapper {...props} {...swapiProps} />;
+      }}
     </SwapiConsumer>
   );
 };

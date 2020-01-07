@@ -6,11 +6,15 @@ import PropTypes from 'prop-types';
 import ErrorIndicator from '../ErrorIndicator';
 import Spinner from '../Spinner';
 
-const withData = (View, getData) => {
+const withData = View => {
   return class extends Component {
+    static defaultProps = {
+      onItemSelect: null,
+    };
+
     static propTypes = {
-      onItemSelect: PropTypes.func.isRequired,
-      renderItem: PropTypes.func.isRequired,
+      getData: PropTypes.func.isRequired,
+      onItemSelect: PropTypes.func,
     };
 
     state = {
@@ -29,6 +33,7 @@ const withData = (View, getData) => {
     };
 
     async renderList() {
+      const { getData } = this.props;
       try {
         const itemList = await getData();
 
