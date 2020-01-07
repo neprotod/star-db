@@ -8,19 +8,20 @@ import RandomPlanet from '../RandomPlanet';
 import ErrorBoundry from '../ErrorBoundry';
 import PeoplePage from '../PeoplePage';
 import Swapi from '../../services/swapi';
+import { SwapiProvider } from '../context/SwapiContext';
 
 export default class App extends Component {
   state = {};
-
-  swapi = new Swapi();
 
   render() {
     return (
       <div className="container">
         <ErrorBoundry>
-          <Header />
-          <RandomPlanet />
-          <PeoplePage />
+          <SwapiProvider value={new Swapi()}>
+            <Header />
+            <RandomPlanet />
+            <PeoplePage />
+          </SwapiProvider>
         </ErrorBoundry>
       </div>
     );
