@@ -24,9 +24,12 @@ const mapMethodsToProps = swapi => {
 };
 
 PlanetDetail.propTypes = {
-  itemId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+  itemId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   getPlanet: PropTypes.func.isRequired,
   getPlanetImage: PropTypes.func.isRequired,
+};
+PlanetDetail.defaultProps = {
+  itemId: null,
 };
 
 export default withSwapi(PlanetDetail, mapMethodsToProps);

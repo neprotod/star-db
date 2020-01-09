@@ -53,18 +53,19 @@ export default class Swapi {
     return this._transformPlanet(res);
   };
 
-  getFilms = async id => {
-    const res = await this.getResourse(`films/${id}`);
-    return this._transformPerson(res);
-  };
-
   getStarship = async id => {
+    console.log('TEEEES');
     const res = await this.getResourse(`starships/${id}`);
-    return this._transformPerson(res);
+    return this._transformStarship(res);
   };
-
+  /*
   getVehicle = async id => {
     const res = await this.getResourse(`vehicles/${id}`);
+    return this._transformPerson(res);
+  };
+
+  getFilms = async id => {
+    const res = await this.getResourse(`films/${id}`);
     return this._transformPerson(res);
   };
 
@@ -72,7 +73,7 @@ export default class Swapi {
     const res = await this.getResourse(`species/${id}`);
     return this._transformPerson(res);
   };
-
+  */
   getPlanetImage = id => {
     return `${this._imgUrl}planets/${id}.jpg`;
   };

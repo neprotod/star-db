@@ -28,11 +28,14 @@ Record.propTypes = {
 
 export default class ItemDetails extends Component {
   static propTypes = {
-    itemId: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-      .isRequired,
+    itemId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     getData: PropTypes.func.isRequired,
     image: PropTypes.func.isRequired,
     children: PropTypes.node.isRequired,
+  };
+
+  static defaultProps = {
+    itemId: null,
   };
 
   state = {

@@ -24,9 +24,12 @@ const mapMethodsToProps = swapi => {
 };
 
 PersonDetail.propTypes = {
-  itemId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+  itemId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   getPersone: PropTypes.func.isRequired,
   getPersonImage: PropTypes.func.isRequired,
+};
+PersonDetail.defaultProps = {
+  itemId: null,
 };
 
 export default withSwapi(PersonDetail, mapMethodsToProps);

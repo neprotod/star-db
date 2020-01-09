@@ -1,36 +1,32 @@
 import React, { Component } from 'react';
 
-import Swapi from '../../services/swapi';
-
 import Row from '../Row';
 import ErrorBoundry from '../ErrorBoundry';
 
 import { PersonList, PersonDetail } from '../sw-components';
 
 export default class PeoplePage extends Component {
-  swapi = new Swapi();
-
   state = {
-    selectedPerson: 3,
+    selectedItem: null,
   };
 
-  onPesrsonSelected = id => {
+  onItemSelected = id => {
     this.setState({
-      selectedPerson: id,
+      selectedItem: id,
     });
   };
 
   render() {
-    const { selectedPerson } = this.state;
+    const { selectedItem } = this.state;
 
     const itemList = (
       <ErrorBoundry>
-        <PersonList onItemSelect={this.onPesrsonSelected} />
+        <PersonList onItemSelect={this.onItemSelected} />
       </ErrorBoundry>
     );
     const itemDetails = (
       <ErrorBoundry>
-        <PersonDetail itemId={selectedPerson} />
+        <PersonDetail itemId={selectedItem} />
       </ErrorBoundry>
     );
 
