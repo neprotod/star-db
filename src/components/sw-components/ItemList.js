@@ -23,25 +23,22 @@ const mapStarshipsMethodToProps = swapi => {
   };
 };
 
-const withChildFunction = (Wraper, fn) => {
+const withChildFunction = fn => Wraper => {
   return props => <Wraper {...props}>{fn}</Wraper>;
 };
 
 const renderItem = ({ name }) => name;
 
-const PersonList = withSwapi(
-  withData(withChildFunction(ItemList, renderItem)),
-  mapPersonMethodToProps,
+const PersonList = withSwapi(mapPersonMethodToProps)(
+  withData(withChildFunction(renderItem)(ItemList)),
 );
 
-const PlanetList = withSwapi(
-  withData(withChildFunction(ItemList, renderItem)),
-  mapPlanetsMethodToProps,
+const PlanetList = withSwapi(mapPlanetsMethodToProps)(
+  withData(withChildFunction(renderItem)(ItemList)),
 );
 
-const StarshipList = withSwapi(
-  withData(withChildFunction(ItemList, renderItem)),
-  mapStarshipsMethodToProps,
+const StarshipList = withSwapi(mapStarshipsMethodToProps)(
+  withData(withChildFunction(renderItem)(ItemList)),
 );
 
 export { PersonList, PlanetList, StarshipList };

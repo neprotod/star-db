@@ -32,4 +32,4 @@ PlanetDetail.defaultProps = {
   itemId: null,
 };
 
-export default withSwapi(PlanetDetail, mapMethodsToProps);
+export default withSwapi(mapMethodsToProps)(PlanetDetail);

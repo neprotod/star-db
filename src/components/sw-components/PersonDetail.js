@@ -32,4 +32,4 @@ PersonDetail.defaultProps = {
   itemId: null,
 };
 
-export default withSwapi(PersonDetail, mapMethodsToProps);
+export default withSwapi(mapMethodsToProps)(PersonDetail);

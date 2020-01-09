@@ -31,4 +31,4 @@ StarshipDetail.defaultProps = {
   itemId: null,
 };
 
-export default withSwapi(StarshipDetail, mapMethodsToProps);
+export default withSwapi(mapMethodsToProps)(StarshipDetail);
