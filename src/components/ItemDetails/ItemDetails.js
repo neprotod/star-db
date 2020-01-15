@@ -59,9 +59,9 @@ export default class ItemDetails extends Component {
     }
   }
 
-  updateLoader() {
+  updateLoader(loaded = true) {
     this.setState({
-      loaded: true,
+      loaded,
     });
   }
 
@@ -75,12 +75,11 @@ export default class ItemDetails extends Component {
   async updatePerson() {
     const { itemId, getData } = this.props;
 
-    if (!itemId) {
-      return;
-    }
-
     try {
-      const data = await getData(itemId);
+      let data = null;
+      if (itemId) {
+        data = await getData(itemId);
+      }
 
       this.setState({
         data,

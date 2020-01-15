@@ -22,13 +22,14 @@ const mapMethodsToProps = swapi => {
   };
 };
 
+StarshipDetail.defaultProps = {
+  itemId: null,
+};
+
 StarshipDetail.propTypes = {
   itemId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   getStarship: PropTypes.func.isRequired,
   getStarshipImage: PropTypes.func.isRequired,
-};
-StarshipDetail.defaultProps = {
-  itemId: null,
 };
 
 export default withSwapi(mapMethodsToProps)(StarshipDetail);

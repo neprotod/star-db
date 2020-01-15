@@ -1,35 +1,37 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 
 import Row from '../Row';
 import ErrorBoundry from '../ErrorBoundry';
 
 import { PlanetList, PlanetDetail } from '../sw-components';
 
-export default class PlanetPage extends Component {
-  state = {
-    selectedItem: null,
-  };
+const PlanetPage = ({ match, history }) => {
+  const { id } = match.params;
 
-  onItemSelected = id => {
-    this.setState({
-      selectedItem: id,
-    });
-  };
+  const itemList = (
+    <ErrorBoundry>
+      <PlanetList
+        onItemSelect={idPage => {
+          history.push(idPage);
+        }}
+      />
+    </ErrorBoundry>
+  );
 
-  render() {
-    const { selectedItem } = this.state;
+  const itemDetails = (
+    <ErrorBoundry>
+      <PlanetDetail itemId={id} />
+    </ErrorBoundry>
+  );
 
-    const itemList = (
-      <ErrorBoundry>
-        <PlanetList onItemSelect={this.onItemSelected} />
-      </ErrorBoundry>
-    );
-    const itemDetails = (
-      <ErrorBoundry>
-        <PlanetDetail itemId={selectedItem} />
-      </ErrorBoundry>
-    );
+  return <Row left={itemList} right={itemDetails} />;
+};
 
-    return <Row left={itemList} right={itemDetails} />;
-  }
-}
+PlanetPage.propTypes = {
+  match: PropTypes.shape().isRequired,
+  history: PropTypes.shape().isRequired,
+};
+
+export default withRouter(PlanetPage);

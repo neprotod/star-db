@@ -7,6 +7,7 @@ import './img/colach.jpg';
 import Header from '../Header';
 import RandomPlanet from '../RandomPlanet';
 import ErrorBoundry from '../ErrorBoundry';
+import StarshipDedails from '../sw-components/StarshipDetail';
 import Swapi from '../../services/swapi';
 import { SwapiProvider } from '../context/SwapiContext';
 import { PeoplePage, PlanetPage, StarshipPage } from '../pages';
@@ -29,9 +30,16 @@ export default class App extends Component {
                   return <h2>Hi! Welcom to StarDB</h2>;
                 }}
               />
-              <Route path="/people" component={PeoplePage} />
-              <Route path="/planets" component={PlanetPage} />
-              <Route path="/starships" component={StarshipPage} />
+              <Route path="/people/:id?" component={PeoplePage} />
+              <Route path="/planets/:id?" component={PlanetPage} />
+              <Route path="/starships" exact component={StarshipPage} />
+              <Route
+                path="/starships/:id"
+                render={({ match }) => {
+                  const { id } = match.params;
+                  return <StarshipDedails itemId={id} />;
+                }}
+              />
             </Router>
           </SwapiProvider>
         </ErrorBoundry>

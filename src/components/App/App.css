@@ -1,68 +1,68 @@
-html{
-  background:url('./img/star.jpg') #000;
+html {
+  background: url('./img/star.jpg') #000;
 }
-body{
-  background:url('./img/colach.jpg') center top no-repeat;
+body {
+  background: url('./img/colach.jpg') center top no-repeat;
 }
-html{
-  height:100%;
+html {
+  height: 100%;
 }
-body{
-  min-height:100%;
+body {
+  min-height: 100%;
 }
-#root{
+#root {
   overflow: hidden;
 }
 
-
-.border-item{
+.border-item {
   /*border:1px solid #555;*/
-  background:#2A2A2Acc;
+  background: #2a2a2acc;
   border-radius: 5px;
 }
 
-.list-group li{
+.list-group li {
   background: transparent;
 }
-.list-group-item{
-  border-top:none;
-  border-left:none;
-  border-right:none;
+.list-group-item {
+  border-top: none;
+  border-left: none;
+  border-right: none;
 }
 
-.container{
+.container {
   flex-wrap: wrap;
 }
-.container > div{
+.container > div {
   margin-bottom: 40px;
-  padding:20px;
+  padding: 20px;
 }
 
-.content{
-  padding:0px !important;
+.content {
+  padding: 0px !important;
   flex-wrap: wrap;
+  justify-content: center;
 }
-.content > *{
-  padding:20px;
+.content > * {
+  padding: 20px;
 }
 
-.content .left-column{
+.content .left-column {
   flex-grow: 0.3;
-  margin-right:20px;
+  margin-right: 20px;
 }
-.content .right-column{
+.content .right-column {
   flex-grow: 1;
   height: 100%;
 }
 
 @media screen and (max-width: 760px) {
-  .content .left-column{
+  .content .left-column {
     flex-grow: 1;
-    margin:0;
-    order:2;
-    margin-top:20px;
+    margin: 0;
+    order: 2;
+    margin-top: 20px;
   }
-  .content .right-column{
-    width:100%;
+  .content .right-column {
+    width: 100%;
   }
 }
