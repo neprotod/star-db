@@ -23,13 +23,13 @@ export default class Swapi {
     return res.results.map(item => this._transformPlanet(item));
   };
 
-  getAllFilms = async () => {
-    const res = await this.getResourse(`films`);
-    return res.results;
-  };
-
   getAllStarships = async () => {
     const res = await this.getResourse(`starships`);
+    return res.results.map(item => this._transformStarship(item));
+  };
+  /*
+  getAllFilms = async () => {
+    const res = await this.getResourse(`films`);
     return res.results;
   };
 
@@ -42,7 +42,7 @@ export default class Swapi {
     const res = await this.getResourse(`vehicles`);
     return res.results.map(item => this._transformPlanet(item));
   };
-
+  */
   getPersone = async id => {
     const res = await this.getResourse(`people/${id}`);
     return this._transformPerson(res);
