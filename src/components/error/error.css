@@ -1,0 +1,13 @@
+.error-404 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-404 .message {
+  color: rgb(228, 35, 35);
+  margin-left: 20px;
+}
+.message .description {
+  color: rgb(252, 170, 170);
+}
