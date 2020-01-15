@@ -1,5 +1,5 @@
-/* eslint-disable */
-import React, { Component } from 'react';
+/* eslint-disable react/forbid-prop-types */
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import './ItemList.css';
@@ -11,9 +11,9 @@ const ItemList = props => {
     children,
   } = props;
 
-  const items = itemList.map(items => {
-    const { id } = items;
-    const item = children(items);
+  const items = itemList.map(item => {
+    const { id } = item;
+    const elem = children(item);
 
     return (
       <li
@@ -22,12 +22,22 @@ const ItemList = props => {
         onClick={() => onItemSelect(id)}
         role="presentation"
       >
-        {item}
+        {elem}
       </li>
     );
   });
 
   return <ul className="item-list list-group">{items}</ul>;
+};
+
+ItemList.defaultProps = {
+  onItemSelect: () => {},
+};
+
+ItemList.propTypes = {
+  data: PropTypes.object.isRequired,
+  children: PropTypes.func.isRequired,
+  onItemSelect: PropTypes.func,
 };
 
 export default ItemList;
