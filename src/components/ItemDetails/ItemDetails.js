@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Swapi from '../../services/swapi';
 import ErrorIndicator from '../ErrorIndicator';
 import Spinner from '../Spinner';
+import { contentScroll } from '../../helpers/scroll';
 
 import './ItemDetails.css';
 
@@ -46,16 +47,17 @@ export default class ItemDetails extends Component {
 
   swapi = new Swapi();
 
-  componentDidMount() {
-    this.updatePerson();
+  async componentDidMount() {
+    await this.updatePerson();
   }
 
-  componentDidUpdate(prevProps) {
+  async componentDidUpdate(prevProps) {
     const { itemId } = this.props;
 
     if (itemId !== prevProps.itemId) {
       this.updateLoader();
-      this.updatePerson();
+      await this.updatePerson();
+      contentScroll();
     }
   }
 

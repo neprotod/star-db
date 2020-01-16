@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 import ErrorIndicator from '../ErrorIndicator';
 import Spinner from '../Spinner';
+import { contentScroll } from '../../helpers/scroll';
 
 const withData = View => {
   return class extends Component {
@@ -24,6 +25,11 @@ const withData = View => {
 
     componentDidMount() {
       this.renderList();
+      contentScroll();
+    }
+
+    componentDidUpdate() {
+      contentScroll();
     }
 
     errorSet = () => {
